@@ -47,3 +47,8 @@ class Database:
             cursor: mysql cursor
         """
         return self.connection.cursor(prepared=prepared)
+
+    def commit(self):
+        """Get the mysql cursor
+        """
+        self.connection.commit()

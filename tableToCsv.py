@@ -10,8 +10,8 @@ Path("./output").mkdir(parents=True, exist_ok=True)
 
 # Récuperation des params de la ligne de commande (Requête MYSQL, Nom du fichier [Optionnel])
 parser = argparse.ArgumentParser()
-parser.add_argument("-q", "--query", help="MYSQL Query")
-parser.add_argument("-f", "--filename", help="Nom du fichier", default='output.csv')
+parser.add_argument("-q", "--query", help="MYSQL Query", required=True)
+parser.add_argument("-f", "--filename", help="Nom du fichier", default='output.csv', required=False)
 
 # Définition des variables globales
 QUERY = parser.parse_args().query
