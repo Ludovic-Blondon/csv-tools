@@ -59,14 +59,14 @@ else:
     q = f"INSERT INTO {table_name} VALUES ("
     q += ', '.join(('%s ' * COLUMN_COUNT).split())
     q += ');'
-    printProgressBar(0, ROW_COUNT, prefix = 'Progress:', suffix = 'Complete', length = 50)
+    printProgressBar(0, ROW_COUNT, prefix = 'Progress:', suffix = 'Complete')
     with open(FILEPATH,  encoding='utf-8') as f:
         reader = csv.reader(f, delimiter=';')
         next(reader)
         i = 1
         for row in reader:
             cur.execute(q, tuple(row))
-            printProgressBar(i, ROW_COUNT, prefix = 'Progress:', suffix = 'Complete', length = 50)
+            printProgressBar(i, ROW_COUNT, prefix = 'Progress:', suffix = 'Complete')
             i += 1
 
     database.commit()
