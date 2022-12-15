@@ -37,7 +37,7 @@ f.close()
 # Check des erreurs
 if os.path.exists(FILEPATH) is False:
     ERROR = f"Le fichier {FILENAME} n'existe pas dans le repertoire ./input/ a la racine de ce projet."
-elif HEADER is None or COLUMN_COUNT == 0 or ROW_COUNT == 1 or ROW_COUNT == 0:
+elif HEADER is None or COLUMN_COUNT == 0 or ROW_COUNT == 0:
     ERROR = "Le fichier contient probablement des erreurs ou est vide"
 
 # Si erreur on la print
@@ -50,7 +50,7 @@ else:
     table_name = f"tmp_{TABLENAME}_{int(time.time())}"
 
     q = f"CREATE TABLE {table_name} ("
-    q += ', '.join(f"{col} VARCHAR(255)".format(col) for col in HEADER)
+    q += ', '.join(f"{col.replace(' ', '_')} VARCHAR(255)".format(col) for col in HEADER)
     q += ');'
 
     cur.execute(q)
