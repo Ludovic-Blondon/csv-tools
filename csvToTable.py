@@ -50,7 +50,7 @@ else:
     table_name = f"tmp_{TABLENAME}_{int(time.time())}"
 
     q = f"CREATE TABLE {table_name} ("
-    q += ', '.join(f"{col.replace(' ', '_')} VARCHAR(255)".format(col) for col in HEADER)
+    q += ', '.join(f"{col.replace(' ', '_').replace('/', '_')} VARCHAR(255)".format(col) for col in HEADER)
     q += ');'
 
     cur.execute(q)
